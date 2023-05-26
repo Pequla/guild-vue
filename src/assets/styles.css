@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+body {
+    background-color: #e2e2e2;
+}
+
 table {
     border: 2px solid;
 }

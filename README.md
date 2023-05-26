@@ -4,7 +4,6 @@ Show and browse all the playes in one discord server. Get details about a player
 
 ## Paths available
 - `/` - Home page
-- `/about` - About page
 - `/details/:id` - User details page
 - `/status` - Server status page
 
