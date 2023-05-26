@@ -1,0 +1,27 @@
+* {
+    font-family: Consolas;
+    text-align: center;
+}
+
+table {
+    border: 2px solid;
+}
+
+th {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+img {
+    width: 32px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
