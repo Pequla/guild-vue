@@ -32,7 +32,7 @@
 import {DataModel} from '@/models/data.model';
 import {StatsModel} from '@/models/stats.model';
 import {MainService} from '@/services/cache.service';
-import {onBeforeMount, ref} from 'vue';
+import {onBeforeMount, onUnmounted, ref} from 'vue';
 import {useRouter} from 'vue-router';
 
 const data = ref<DataModel[]>();
@@ -66,5 +66,10 @@ function update(uuid: any) {
       .then(rsp => loadData())
 }
 
+// retrieve data on mount
 onBeforeMount(() => loadData())
+
+// auto update data every 15 sec
+const interval = setInterval(loadData, 15000)
+onUnmounted(() => clearInterval(interval));
 </script>

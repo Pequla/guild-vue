@@ -23,20 +23,27 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue'
+import {onBeforeMount, onUnmounted, ref} from 'vue'
 import {LinkService} from "@/services/link.service";
 import {StatusModel} from "@/models/status.model";
 import {useRouter} from "vue-router";
 
 const status = ref<StatusModel>();
 const router = useRouter();
-LinkService.retrieveStatus()
-    .then(rsp => status.value = rsp.data)
+onBeforeMount(() => loadStatus())
+
+function loadStatus() {
+  LinkService.retrieveStatus()
+      .then(rsp => status.value = rsp.data)
+}
+
+// Auto reload status every 3 sec
+const interval = setInterval(loadStatus, 3000)
+onUnmounted(() => clearInterval(interval));
 
 function details(uuid: string) {
-  uuid.replaceAll('-', '')
   router.push({
-    path: '/details/' + uuid
+    path: '/details/' + uuid.replaceAll('-', '')
   })
 }
 </script>
