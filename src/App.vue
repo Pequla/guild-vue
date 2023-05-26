@@ -1,11 +1,12 @@
 <template>
   <nav>
     <div class="border-black">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>
+      |
       <router-link to="/about">About</router-link>
     </div>
   </nav>
-  <router-view />
+  <router-view/>
 </template>
 
 <style scoped>

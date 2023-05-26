@@ -29,11 +29,11 @@
 </template>
 
 <script lang="ts" setup>
-import { DataModel } from '@/models/data.model';
-import { StatsModel } from '@/models/stats.model';
-import { MainService } from '@/services/cache.service';
-import { onBeforeMount, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import {DataModel} from '@/models/data.model';
+import {StatsModel} from '@/models/stats.model';
+import {MainService} from '@/services/cache.service';
+import {onBeforeMount, ref} from 'vue';
+import {useRouter} from 'vue-router';
 
 const data = ref<DataModel[]>();
 const stats = ref<StatsModel>();
@@ -41,9 +41,9 @@ const router = useRouter();
 
 function loadData() {
   MainService.retrieveAll()
-    .then(rsp => data.value = rsp.data)
+      .then(rsp => data.value = rsp.data)
   MainService.retrieveStats()
-    .then(rsp => stats.value = rsp.data)
+      .then(rsp => stats.value = rsp.data)
 }
 
 function formatDate(timestamp: any) {
@@ -65,5 +65,5 @@ function update(uuid: any) {
   MainService.updatePlayer(uuid).then(rsp => loadData())
 }
 
-onBeforeMount(()=>loadData())
+onBeforeMount(() => loadData())
 </script>

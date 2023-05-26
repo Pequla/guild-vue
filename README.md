@@ -1,19 +1,14 @@
-# guild-vue
+# GuildVue
 
-## Project setup
-```
-npm install
-```
+Show and browse all the playes in one discord server. Get details about a player and much more.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Paths available
+- `/` - Home page
+- `/about` - About page
+- `/details/:id` - User details page
+- `/status` - Server status page
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Libraries used
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- `axios` - Faster and better HTTP Client
+- `typescript` - JavaScript with types
