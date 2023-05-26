@@ -3,12 +3,12 @@
     <div class="border-black">
       <router-link to="/">Home</router-link>
       |
-      <router-link to="/status">Server status</router-link>
+      <router-link to="/status">Status</router-link>
     </div>
   </nav>
   <router-view/>
   <footer class="center">
-    <p>&copy; {{year}} All rights reserved</p>
+    <p>&copy; {{year}} Beocraft -  All rights reserved</p>
   </footer>
 </template>
 

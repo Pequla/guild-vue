@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
         }
     },
     {
-        path: '/details/:id',
+        path: '/details/:uuid',
         name: 'UserData',
         component: DetailsView,
         meta: {

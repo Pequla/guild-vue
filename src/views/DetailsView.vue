@@ -3,10 +3,6 @@
     <h3>Player details</h3>
     <table class="center" v-if="player">
       <tr>
-        <th>id</th>
-        <td>{{ player.id }}</td>
-      </tr>
-      <tr>
         <th>icon</th>
         <td>
           <img :src="player.avatar">
@@ -52,6 +48,7 @@
         <td>{{ player.cachedAt }}</td>
       </tr>
     </table>
+    <p v-else>No data found for player {{uuid}}</p>
   </div>
 </template>
 
@@ -62,10 +59,10 @@ import {ref} from 'vue';
 import {useRoute} from 'vue-router';
 
 const route: any = useRoute()
-const id = route.params.id;
+const uuid = route.params.uuid;
 const player = ref<DataModel>()
 
-MainService.retrieveById(id).then(rsp => {
+MainService.retrieveByUuid(uuid).then(rsp => {
   player.value = rsp.data
 })
 </script>

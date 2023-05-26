@@ -8,7 +8,7 @@ export interface StatusModel {
         sample:
             {
                 name: string,
-                uuid: string
+                id: string
             }[] | null
     },
     version: {

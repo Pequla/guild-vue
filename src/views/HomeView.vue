@@ -20,8 +20,8 @@
         <td class="created_at">{{ formatDate(d.createdAt) }}</td>
         <td class="cached_at">{{ formatDate(d.cachedAt) }}</td>
         <td>
-          <button type="button" class="details" @click="e => details(d.id)">details</button>
-          <button type="button" class="update" @click="e => update(d.uuid)">update</button>
+          <button type="button" class="details" @click="(e) => details(d.uuid)">details</button>
+          <button type="button" class="update" @click="(e) => update(d.uuid)">update</button>
         </td>
       </tr>
     </table>
@@ -55,14 +55,15 @@ function addLeadingZeros(num: number) {
   return String(num).padStart(2, '0');
 }
 
-function details(id: any) {
+function details(uuid: string) {
   router.push({
-    path: '/details/' + id
+    path: '/details/' + uuid
   })
 }
 
 function update(uuid: any) {
-  MainService.updatePlayer(uuid).then(rsp => loadData())
+  MainService.updatePlayer(uuid)
+      .then(rsp => loadData())
 }
 
 onBeforeMount(() => loadData())
