@@ -1,5 +1,10 @@
+@font-face {
+    font-family: 'Inconsolata', monospace;
+    src: url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+}
+
 * {
-    font-family: Consolas, sans-serif;
+    font-family: 'Inconsolata', monospace;
     text-align: center;
 }
 

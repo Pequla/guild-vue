@@ -1,11 +1,13 @@
 # GuildVue
 
-Show and browse all the playes in one discord server. Get details about a player and much more.
+Show and browse all the players in one discord server. Get details about a player and much more.
 
 ## Paths available
 - `/` - Home page
+- `/about` - About the server page
 - `/details/:id` - User details page
-- `/status` - Server status page
+- `/online` - Online players
+- `/join` - Discord invite
 
 ## Libraries used
 
