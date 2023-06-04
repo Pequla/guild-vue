@@ -14,12 +14,12 @@
             <tr v-for="d in data">
                 <td class="icon">
                     <img :src="d.avatar">
-                    <img :src="`https://crafatar.com/avatars/${d.uuid}`">
+                    <img :src="`https://visage.surgeplay.com/face/32/${d.uuid}`">
                 </td>
                 <td class="minecraft">{{ d.name }}</td>
                 <td class="discord">{{ d.nickname }}</td>
-                <td class="created_at">{{ formatDate(d.createdAt) }}</td>
-                <td class="cached_at">{{ formatDate(d.cachedAt) }}</td>
+                <DateFormat :date="d.createdAt"/>
+                <DateFormat :date="d.cachedAt"/>
                 <td>
                     <button type="button" class="details" @click="(e) => details(d.uuid)">details</button>
                     <button type="button" class="update" @click="(e) => update(d.uuid)">update</button>
@@ -32,28 +32,20 @@
 <script lang="ts" setup>
 import {DataModel} from '@/models/data.model';
 import {StatsModel} from '@/models/stats.model';
-import {MainService} from '@/services/cache.service';
+import {CacheService} from '@/services/cache.service';
 import {onBeforeMount, onBeforeUnmount, ref} from 'vue';
 import {useRouter} from 'vue-router';
+import DateFormat from "@/components/DateFormat.vue";
 
 const data = ref<DataModel[]>();
 const stats = ref<StatsModel>();
 const router = useRouter();
 
 function loadData() {
-    MainService.retrieveAll()
+    CacheService.retrieveAll()
         .then(rsp => data.value = rsp.data)
-    MainService.retrieveStats()
+    CacheService.retrieveStats()
         .then(rsp => stats.value = rsp.data)
-}
-
-function formatDate(timestamp: any) {
-    const date = new Date(timestamp)
-    return `${addLeadingZeros(date.getHours())}:${addLeadingZeros(date.getMinutes())} ${addLeadingZeros(date.getDate())}-${addLeadingZeros(date.getMonth())}-${date.getFullYear()}`
-}
-
-function addLeadingZeros(num: number) {
-    return String(num).padStart(2, '0');
 }
 
 function details(uuid: string) {
@@ -63,7 +55,7 @@ function details(uuid: string) {
 }
 
 function update(uuid: any) {
-    MainService.updatePlayer(uuid)
+    CacheService.updatePlayer(uuid)
         .then(rsp => loadData())
 }
 

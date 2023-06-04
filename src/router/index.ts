@@ -1,10 +1,7 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import OnlineView from '../views/OnlineView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import DetailsView from '../views/DetailsView.vue'
-import AboutView from "@/views/AboutView.vue";
-import JoinView from "@/views/JoinView.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -16,48 +13,16 @@ const routes: Array<RouteRecordRaw> = [
         }
     },
     {
-        path: '/about',
-        name: 'about',
-        component: AboutView,
-        meta: {
-            title: 'About'
-        }
-    },
-    {
-        path: '/online',
-        name: 'online',
-        component: OnlineView,
-        meta: {
-            title: 'Online'
-        }
-    },
-    {
-        path: '/join',
-        name: 'join',
-        component: JoinView,
-        meta: {
-            title: 'Join'
-        }
-    },
-    {
         path: '/details/:uuid',
-        name: 'UserData',
+        name: 'details',
         component: DetailsView,
         meta: {
             title: 'User'
         }
     },
     {
-        path: '/status',
-        redirect: '/online'
-    },
-    {
         path: '/home',
         redirect: '/'
-    },
-    {
-        path: '/invite',
-        redirect: '/join'
     },
     {
         path: '/:catchAll(.*)',
@@ -76,7 +41,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.meta.title)
-        document.title = `${to.meta.title} :: Beocraft`;
+        document.title = `${to.meta.title} :: GuildVue`;
     next();
 })
 

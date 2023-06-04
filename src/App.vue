@@ -1,27 +1,11 @@
 <template>
-    <nav>
-        <div class="border-black">
-            <router-link to="/">Home</router-link>
-            |
-            <router-link to="/online">Online</router-link>
-            |
-            <router-link to="/about">About</router-link>
-            |
-            <router-link to="/join">Join Now</router-link>
-        </div>
-    </nav>
     <router-view/>
     <footer class="center">
-        <p>&copy; {{ year }} Beocraft - All rights reserved</p>
+        <p>&copy; {{ year }} Pequla - All rights reserved</p>
+        <p>Source code available on <a href="https://github.com/Pequla/guild-vue">GitHub</a></p>
     </footer>
 </template>
 
 <script lang="ts" setup>
 const year = new Date().getFullYear();
 </script>
-
-<style scoped>
-.border-black {
-    border: 2px black;
-}
-</style>
