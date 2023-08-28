@@ -2,6 +2,7 @@ import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import DetailsView from '../views/DetailsView.vue'
+import StatusView from "@/views/StatusView.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -18,6 +19,14 @@ const routes: Array<RouteRecordRaw> = [
         component: DetailsView,
         meta: {
             title: 'User'
+        }
+    },
+    {
+        path: '/status',
+        name: 'status',
+        component: StatusView,
+        meta: {
+            title: 'Status'
         }
     },
     {

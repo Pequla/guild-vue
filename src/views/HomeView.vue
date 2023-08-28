@@ -1,32 +1,14 @@
 <template>
-    <div class="home">
-        <h3 v-if="stats">Displaying total of {{ stats.count }} players from {{ stats.guilds.count }} different
-            guilds</h3>
-        <table id="player-table" class="center" v-if="data">
-            <tr>
-                <th>icon</th>
-                <th>minecraft</th>
-                <th>discord</th>
-                <th>created_at</th>
-                <th>cached_at</th>
-                <th>actions</th>
-            </tr>
-            <tr v-for="d in data">
-                <td class="icon">
-                    <img :src="d.avatar">
-                    <img :src="`https://visage.surgeplay.com/face/32/${d.uuid}`">
-                </td>
-                <td class="minecraft">{{ d.name }}</td>
-                <td class="discord">{{ d.nickname }}</td>
-                <DateFormat :date="d.createdAt"/>
-                <DateFormat :date="d.cachedAt"/>
-                <td>
-                    <button type="button" class="details" @click="(e) => details(d.uuid)">details</button>
-                    <button type="button" class="update" @click="(e) => update(d.uuid)">update</button>
-                </td>
-            </tr>
-        </table>
-    </div>
+  <div class="home">
+    <h1>Home Page</h1>
+    <h3 v-if="stats">Displaying total of {{ stats.count }} players from {{ stats.guilds.count }} different
+      guilds</h3>
+    <PlayerTable
+        :players="data"
+        :load-data="loadData"
+        v-if="data"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -36,27 +18,16 @@ import {CacheService} from '@/services/cache.service';
 import {onBeforeMount, onBeforeUnmount, ref} from 'vue';
 import {useRouter} from 'vue-router';
 import DateFormat from "@/components/DateFormat.vue";
+import PlayerTable from "@/components/PlayerTable.vue";
 
 const data = ref<DataModel[]>();
 const stats = ref<StatsModel>();
-const router = useRouter();
 
 function loadData() {
-    CacheService.retrieveAll()
-        .then(rsp => data.value = rsp.data)
-    CacheService.retrieveStats()
-        .then(rsp => stats.value = rsp.data)
-}
-
-function details(uuid: string) {
-    router.push({
-        path: '/details/' + uuid
-    })
-}
-
-function update(uuid: any) {
-    CacheService.updatePlayer(uuid)
-        .then(rsp => loadData())
+  CacheService.retrieveAll()
+      .then(rsp => data.value = rsp.data)
+  CacheService.retrieveStats()
+      .then(rsp => stats.value = rsp.data)
 }
 
 // retrieve data on mount

@@ -1,15 +1,24 @@
 @font-face {
-    font-family: 'Inconsolata', monospace;
-    src: url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+    font-family: riffic;
+    src: url("./riffic.ttf");
 }
 
 * {
-    font-family: 'Inconsolata', monospace;
+    font-family: riffic;
     text-align: center;
 }
 
 body {
-    background-color: #e2e2e2;
+    background-color: #282828;
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: #7289da;
 }
 
 table {
@@ -26,8 +35,12 @@ td {
     padding-right: 1rem;
 }
 
-img {
+.avatar {
     width: 32px;
+}
+
+.skin {
+    width: 96px;
 }
 
 .center {
@@ -37,4 +50,36 @@ img {
 
 .date {
     font-style: italic;
+}
+
+@media only screen and (max-width: 900px) {
+
+    /* For mobile phones: */
+    .cached_at {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+
+    /* For mobile phones: */
+    .created_at {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+
+    /* For mobile phones: */
+    .discord {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+
+    /* For mobile phones: */
+    .action {
+        display: none;
+    }
 }

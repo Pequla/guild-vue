@@ -1,7 +1,10 @@
 import axios from "axios"
+import {DataModel} from "@/models/data.model";
+import {StatsModel} from "@/models/stats.model";
+import {StatusModel} from "@/models/status.model";
 
 const client = axios.create({
-    baseURL: 'https://api.pequla.com/guildcache',
+    baseURL: 'https://winterland.pequla.com/api',
     headers: {
         'Accept': 'application/json'
     },
@@ -12,18 +15,22 @@ const client = axios.create({
 
 export class CacheService {
     static async retrieveAll() {
-        return await client.get('/data')
+        return await client.get<DataModel[]>('/data')
     }
 
     static async retrieveByUuid(uuid: string) {
-        return await client.get('/data/uuid/' + uuid)
+        return await client.get<DataModel>('/data/uuid/' + uuid)
     }
 
     static async retrieveStats() {
-        return await client.get('/data/stats')
+        return await client.get<StatsModel>('/data/stats')
     }
 
     static async updatePlayer(uuid: string) {
         return await client.post('/sync/player/' + uuid)
+    }
+
+    static async retrieveServerStatus() {
+        return await client.get<StatusModel>('/status/winterland.pequla.com')
     }
 }
