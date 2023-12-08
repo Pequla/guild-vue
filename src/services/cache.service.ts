@@ -4,7 +4,7 @@ import {StatsModel} from "@/models/stats.model";
 import {StatusModel} from "@/models/status.model";
 
 const client = axios.create({
-    baseURL: 'https://winterland.pequla.com/api',
+    baseURL: 'https://api.beocraft.net',
     headers: {
         'Accept': 'application/json'
     },
